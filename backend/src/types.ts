@@ -1,0 +1,130 @@
+export type FieldKind = "input" | "display";
+
+export type FieldType =
+  | "text"
+  | "number"
+  | "textarea"
+  | "url"
+  | "email"
+  | "date"
+  | "select"
+  | "multiselect"
+  | "autocomplete"
+  | "phone"
+  | "image-upload"
+  | "boolean"
+  | "display";
+
+export const INPUT_FIELD_TYPES: FieldType[] = [
+  "text",
+  "number",
+  "textarea",
+  "url",
+  "email",
+  "date",
+  "select",
+  "multiselect",
+  "autocomplete",
+  "phone",
+  "image-upload",
+  "boolean",
+];
+
+export const DISPLAY_FIELD_TYPES: FieldType[] = ["display"];
+
+export const FIELD_TYPES: FieldType[] = [...INPUT_FIELD_TYPES, ...DISPLAY_FIELD_TYPES];
+
+export interface FieldTypeConfig {
+  options?: string[];
+}
+
+export interface FieldTypeData {
+  type: FieldType;
+  key: string;
+  label: string;
+  required: boolean;
+  placeholder?: string;
+  config?: FieldTypeConfig;
+}
+
+export interface FieldTypeRecord {
+  id: string;
+  name: string;
+  data: FieldTypeData;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface EntityFieldRef {
+  fieldTypeId: string;
+  order: number;
+  labelOverride?: string;
+  requiredOverride?: boolean;
+}
+
+export interface EntityActionConfig {
+  id: string;
+  actionId: string;
+  targetFieldTypeIds: string[];
+  labelOverride?: string;
+}
+
+export interface EntityData {
+  name: string;
+  fields: EntityFieldRef[];
+  actions: EntityActionConfig[];
+}
+
+export interface EntityRecord {
+  id: string;
+  name: string;
+  data: EntityData;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface ScreenItem {
+  i: string;
+  entityId: string;
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+}
+
+export interface ScreenData {
+  name: string;
+  items: ScreenItem[];
+}
+
+export interface ScreenRecord {
+  id: string;
+  name: string;
+  data: ScreenData;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface ActionData {
+  name: string;
+  label: string;
+}
+
+export interface ActionRecord {
+  id: string;
+  name: string;
+  data: ActionData;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface EntityValueData {
+  values: Record<string, string>;
+}
+
+export interface EntityValueRecord {
+  entityId: string;
+  data: EntityValueData;
+  createdAt: string;
+  updatedAt: string;
+}

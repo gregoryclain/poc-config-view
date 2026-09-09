@@ -1,0 +1,218 @@
+:root {
+  color-scheme: light dark;
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f5f5f7;
+  color: #1a1a1a;
+}
+
+#app {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+a {
+  color: #4338ca;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+.btn {
+  border: 1px solid #4338ca;
+  background: #4338ca;
+  color: white;
+  border-radius: 6px;
+  padding: 8px 14px;
+}
+
+.btn.secondary {
+  background: white;
+  color: #4338ca;
+}
+
+.btn.danger {
+  background: white;
+  color: #b91c1c;
+  border-color: #b91c1c;
+}
+
+.card {
+  background: white;
+  border: 1px solid #e5e5ea;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.field-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.field-row label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #444;
+}
+
+.field-row input,
+.field-row select,
+.field-row textarea {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font: inherit;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 48px 16px;
+  color: #666;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border: 1px solid #e5e5ea;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.data-table th,
+.data-table td {
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+.data-table th {
+  background: #fafafa;
+  font-weight: 600;
+  color: #444;
+}
+
+.data-table tr:last-child td {
+  border-bottom: none;
+}
+
+nav.top-nav {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #e5e5ea;
+  padding-bottom: 12px;
+}
+
+/* grid-layout-plus base styles (package ships scss source only, not compiled css) */
+.vgl-layout {
+  position: relative;
+  box-sizing: border-box;
+  transition: height 200ms ease;
+}
+
+.vgl-item {
+  position: absolute;
+  box-sizing: border-box;
+  transition: 200ms ease;
+  transition-property: left, top, right;
+}
+
+.vgl-item--placeholder {
+  z-index: 2;
+  user-select: none;
+  background-color: #4338ca;
+  opacity: 20%;
+  transition-duration: 100ms;
+}
+
+.vgl-item--no-touch {
+  touch-action: none;
+}
+
+.vgl-item--transform {
+  right: auto;
+  left: 0;
+  transition-property: transform;
+}
+
+.vgl-item--resizing {
+  z-index: 3;
+  user-select: none;
+  opacity: 60%;
+}
+
+.vgl-item--dragging {
+  z-index: 3;
+  user-select: none;
+  opacity: 100%;
+  transition: none;
+}
+
+.vgl-item__resizer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  box-sizing: border-box;
+  width: 10px;
+  height: 10px;
+  cursor: se-resize;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal-panel {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  width: 90%;
+  max-width: 640px;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 22px;
+  line-height: 1;
+  color: #666;
+}
+
+.vgl-item__resizer::before {
+  position: absolute;
+  inset: 0 3px 3px 0;
+  content: "";
+  border: 0 solid #444;
+  border-right-width: 2px;
+  border-bottom-width: 2px;
+}
