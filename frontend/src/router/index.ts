@@ -11,6 +11,7 @@ const router = createRouter({
     { path: "/screens/new", name: "screen-new", component: () => import("../views/ScreenEditorView.vue") },
     { path: "/screens/:id", name: "screen-edit", component: () => import("../views/ScreenEditorView.vue"), props: true },
     { path: "/screens/:id/preview", name: "screen-preview", component: () => import("../views/ScreenPreviewView.vue"), props: true },
+    { path: "/screens/:id/json", name: "screen-json", component: () => import("../views/ScreenJsonView.vue"), props: true },
     { path: "/actions", name: "actions", component: () => import("../views/ActionsView.vue") },
   ],
 });

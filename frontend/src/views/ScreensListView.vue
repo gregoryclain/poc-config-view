@@ -46,6 +46,7 @@ onMounted(load);
       <p>{{ screen.data.items.length }} entité(s) posée(s)</p>
       <RouterLink :to="`/screens/${screen.id}`" class="btn secondary">Éditer</RouterLink>
       <RouterLink :to="`/screens/${screen.id}/preview`" class="btn secondary" style="margin-left: 8px">Prévisualiser</RouterLink>
+      <RouterLink :to="`/screens/${screen.id}/json`" class="btn secondary" style="margin-left: 8px">Voir JSON</RouterLink>
       <button class="btn danger" style="margin-left: 8px" @click="remove(screen.id)">Supprimer</button>
     </div>
   </div>

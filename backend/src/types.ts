@@ -36,6 +36,15 @@ export const FIELD_TYPES: FieldType[] = [...INPUT_FIELD_TYPES, ...DISPLAY_FIELD_
 
 export interface FieldTypeConfig {
   options?: string[];
+  validation?: FieldValidationRule[];
+}
+
+export type FieldValidationRuleKind = "maxLength" | "pattern" | "notFutureDate";
+
+export interface FieldValidationRule {
+  kind: FieldValidationRuleKind;
+  value?: number | string;
+  errorCode: string;
 }
 
 export interface FieldTypeData {

@@ -42,6 +42,15 @@ export function fieldKindOf(type: FieldType): FieldKind {
 
 export interface FieldTypeConfig {
   options?: string[];
+  validation?: FieldValidationRule[];
+}
+
+export type FieldValidationRuleKind = "maxLength" | "pattern" | "notFutureDate";
+
+export interface FieldValidationRule {
+  kind: FieldValidationRuleKind;
+  value?: number | string;
+  errorCode: string;
 }
 
 export interface FieldTypeData {
