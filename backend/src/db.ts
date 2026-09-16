@@ -59,7 +59,7 @@ if (actionCount.count === 0) {
   db.prepare("INSERT INTO actions (id, name, data, created_at, updated_at) VALUES (?, ?, ?, ?, ?)").run(
     randomUUID(),
     "fill-fields",
-    JSON.stringify({ name: "fill-fields", label: "Remplissage des champs" }),
+    JSON.stringify({ name: "fill-fields", label: "Remplissage des champs", kind: "fill-fields" }),
     now,
     now,
   );

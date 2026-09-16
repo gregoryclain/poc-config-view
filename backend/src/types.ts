@@ -114,9 +114,17 @@ export interface ScreenRecord {
   updatedAt: string;
 }
 
+/**
+ * Open string, not a closed union: the OnePlatform renderer resolves a `kind` against a
+ * runtime registry (kind -> Vue component), so new business-rule kinds can be configured
+ * here without a matching TS union change in either repo.
+ */
+export type ActionKind = string;
+
 export interface ActionData {
   name: string;
   label: string;
+  kind: ActionKind;
 }
 
 export interface ActionRecord {

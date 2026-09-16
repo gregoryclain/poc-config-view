@@ -45,7 +45,7 @@ actionsRouter.post("/", (req, res) => {
   }
   const id = randomUUID();
   const now = new Date().toISOString();
-  const normalized: ActionData = { name: data.name, label: data.label };
+  const normalized: ActionData = { name: data.name, label: data.label, kind: data.kind ?? "fill-fields" };
   db.prepare(
     "INSERT INTO actions (id, name, data, created_at, updated_at) VALUES (?, ?, ?, ?, ?)",
   ).run(id, normalized.name, JSON.stringify(normalized), now, now);
@@ -60,7 +60,7 @@ actionsRouter.put("/:id", (req, res) => {
     return;
   }
   const now = new Date().toISOString();
-  const normalized: ActionData = { name: data.name, label: data.label };
+  const normalized: ActionData = { name: data.name, label: data.label, kind: data.kind ?? "fill-fields" };
   db.prepare("UPDATE actions SET name = ?, data = ?, updated_at = ? WHERE id = ?").run(
     normalized.name,
     JSON.stringify(normalized),
