@@ -45,7 +45,7 @@ screensRouter.post("/", (req, res) => {
   }
   const id = randomUUID();
   const now = new Date().toISOString();
-  const normalized: ScreenData = { name: data.name, items: data.items ?? [] };
+  const normalized: ScreenData = { name: data.name, items: data.items ?? [], domain: data.domain };
   db.prepare(
     "INSERT INTO screens (id, name, data, created_at, updated_at) VALUES (?, ?, ?, ?, ?)",
   ).run(id, normalized.name, JSON.stringify(normalized), now, now);
@@ -60,7 +60,7 @@ screensRouter.put("/:id", (req, res) => {
     return;
   }
   const now = new Date().toISOString();
-  const normalized: ScreenData = { name: data.name, items: data.items ?? [] };
+  const normalized: ScreenData = { name: data.name, items: data.items ?? [], domain: data.domain };
   db.prepare("UPDATE screens SET name = ?, data = ?, updated_at = ? WHERE id = ?").run(
     normalized.name,
     JSON.stringify(normalized),

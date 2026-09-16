@@ -13,7 +13,8 @@ export type FieldType =
   | "phone"
   | "image-upload"
   | "boolean"
-  | "display";
+  | "display"
+  | "widget";
 
 export const INPUT_FIELD_TYPES: FieldType[] = [
   "text",
@@ -30,7 +31,7 @@ export const INPUT_FIELD_TYPES: FieldType[] = [
   "boolean",
 ];
 
-export const DISPLAY_FIELD_TYPES: FieldType[] = ["display"];
+export const DISPLAY_FIELD_TYPES: FieldType[] = ["display", "widget"];
 
 export const FIELD_TYPES: FieldType[] = [...INPUT_FIELD_TYPES, ...DISPLAY_FIELD_TYPES];
 
@@ -53,6 +54,8 @@ export interface FieldTypeData {
   label: string;
   required: boolean;
   placeholder?: string;
+  /** Remix Icon class name (e.g. "ri-phone-line") shown next to this field when it's offered as an action target (e.g. in an "Add" dropdown item). */
+  icon?: string;
   config?: FieldTypeConfig;
 }
 
@@ -104,6 +107,8 @@ export interface ScreenItem {
 export interface ScreenData {
   name: string;
   items: ScreenItem[];
+  /** Business domain this screen's records belong to (e.g. "contact") — resolved by the consuming renderer to know which domain adapter to use. */
+  domain?: string;
 }
 
 export interface ScreenRecord {

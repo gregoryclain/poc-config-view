@@ -85,6 +85,7 @@ onMounted(load);
           <th>Type</th>
           <th>Clé</th>
           <th>Requis</th>
+          <th>Icône</th>
           <th></th>
         </tr>
       </thead>
@@ -94,13 +95,14 @@ onMounted(load);
           <td>{{ ft.data.type }}</td>
           <td>{{ ft.data.key }}</td>
           <td>{{ ft.data.required ? "Oui" : "Non" }}</td>
+          <td>{{ ft.data.icon || "—" }}</td>
           <td style="white-space: nowrap; text-align: right">
             <button class="btn secondary" style="padding: 2px 10px" @click="startEdit(ft)">Éditer</button>
             <button class="btn danger" style="padding: 2px 10px; margin-left: 6px" @click="remove(ft.id)">Supprimer</button>
           </td>
         </tr>
         <tr v-if="filteredFieldTypes.length === 0">
-          <td colspan="5" style="text-align: center; color: #666">Aucun résultat.</td>
+          <td colspan="6" style="text-align: center; color: #666">Aucun résultat.</td>
         </tr>
       </tbody>
     </table>

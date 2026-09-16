@@ -18,6 +18,7 @@ const router = useRouter();
 
 const screenId = route.params.id as string | undefined;
 const name = ref("");
+const domain = ref("");
 const layout = ref<ScreenItem[]>([]);
 const entities = ref<EntityRecord[]>([]);
 const loading = ref(true);
@@ -33,6 +34,7 @@ async function load() {
   if (screenId) {
     const screen = await screensApi.get(screenId);
     name.value = screen.name;
+    domain.value = screen.data.domain ?? "";
     layout.value = screen.data.items;
   }
   loading.value = false;
@@ -72,6 +74,7 @@ function removeItem(i: string) {
 async function save() {
   const data = {
     name: name.value.trim(),
+    domain: domain.value.trim() || undefined,
     items: layout.value.map(({ i, entityId, x, y, w, h }) => ({ i, entityId, x, y, w, h })),
   };
   if (screenId) {
@@ -96,6 +99,11 @@ onMounted(load);
     <div class="field-row">
       <label for="screen-name">Nom de l'écran</label>
       <input id="screen-name" v-model="name" required placeholder="Ex: Fiche contact" />
+    </div>
+
+    <div class="field-row">
+      <label for="screen-domain">Domaine métier</label>
+      <input id="screen-domain" v-model="domain" placeholder="Ex: contact" />
     </div>
 
     <div style="display: flex; gap: 24px; align-items: flex-start">

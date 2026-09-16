@@ -17,7 +17,7 @@ const emit = defineEmits<{
 }>();
 
 function blank(): FieldTypeData {
-  return { type: "text", key: "", label: "", required: false, placeholder: "", config: { options: [] } };
+  return { type: "text", key: "", label: "", required: false, placeholder: "", icon: "", config: { options: [] } };
 }
 
 const form = reactive<FieldTypeData>(props.modelValue ? { ...props.modelValue, config: { options: [...(props.modelValue.config?.options ?? [])] } } : blank());
@@ -49,6 +49,7 @@ function handleSubmit() {
     label: form.label.trim(),
     required: isDisplay.value ? false : form.required,
     placeholder: form.placeholder?.trim() || undefined,
+    icon: form.icon?.trim() || undefined,
     config: showOptions.value
       ? { options: optionsText.value.split("\n").map((o) => o.trim()).filter(Boolean) }
       : undefined,
@@ -92,6 +93,11 @@ function handleSubmit() {
     <div class="field-row">
       <label for="ft-placeholder">{{ isDisplay ? "Texte d'exemple" : "Placeholder" }}</label>
       <input id="ft-placeholder" v-model="form.placeholder" />
+    </div>
+
+    <div class="field-row">
+      <label for="ft-icon">Icône (classe Remix Icon)</label>
+      <input id="ft-icon" v-model="form.icon" placeholder="Ex: ri-phone-line" />
     </div>
 
     <div class="field-row" v-if="!isDisplay" style="flex-direction: row; align-items: center; gap: 8px">
